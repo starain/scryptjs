@@ -1,7 +1,11 @@
 scryptjs
 ========
 
-scrypt algorithm implemented in javascript
+scrypt algorithm implemented in javascript.
+
+Optimized by 32 bit operation (deeply influenced by [go scrypt implementation](https://code.google.com/p/go/source/browse/scrypt/scrypt.go?repo=crypto).), much faster than standard 8 bit algorithm.
+
+Tested on my Macbook Pro shown 2 - 3 times performance improvement after applies all the optimizations.
 
 # Initialize working environment
 All following instructions are under the root of working directory.
@@ -22,7 +26,7 @@ In the root of working directory.
 gendeps
 python -m SimpleHTTPServer 8080
 ```
-Point your browser to http://localhost:8080/scryptjs/src/tests/crypt/scrypt_test.html
+Point your browser to [http://localhost:8080/scryptjs/src/tests/crypt/scrypt_test.html](http://localhost:8080/scryptjs/src/tests/crypt/scrypt_test.html)
 
 # Compile library
 In the root of working directory.
