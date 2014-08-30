@@ -1,11 +1,11 @@
 scryptjs
 ========
 
-scrypt algorithm implemented in javascript.
-
-Optimized by 32 bit operation (deeply influenced by [go scrypt implementation](https://code.google.com/p/go/source/browse/scrypt/scrypt.go?repo=crypto).), much faster than standard 8 bit algorithm.
+scrypt algorithm implemented in pure javascript. Optimized by using 32 bit operation.
 
 Tested on my Macbook Pro shown 2 - 3 times performance improvement after applies all the optimizations.
+
+Deeply influenced by [go scrypt implementation](https://code.google.com/p/go/source/browse/scrypt/scrypt.go?repo=crypto).
 
 # Initialize working environment
 All following instructions are under the root of working directory.
@@ -31,5 +31,5 @@ Point your browser to [http://localhost:8080/scryptjs/src/tests/crypt/scrypt_tes
 # Compile library
 In the root of working directory.
 ```
-jscompile --namespace=crypt.Scrypt
+jscompile --namespace=starain.crypt.Scrypt
 ```

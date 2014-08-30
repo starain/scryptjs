@@ -1,4 +1,4 @@
-goog.provide('crypt.Scrypt');
+goog.provide('starain.crypt.Scrypt');
 
 goog.require('goog.crypt.pbkdf2');
 
@@ -11,7 +11,7 @@ var MAX_INT = 2147483647;
 /**
  * @constructor
  */
-crypt.Scrypt = function() {
+starain.crypt.Scrypt = function() {
 };
 
 /**
@@ -26,7 +26,7 @@ crypt.Scrypt = function() {
  * @param{number} keyLen Key len in bit.
  * @return{Array.<number>} Derived Key in byte array.
  */
-crypt.Scrypt.prototype.GenerateDerivedKey =
+starain.crypt.Scrypt.prototype.GenerateDerivedKey =
     function(password, salt, N, r, p, keyLen) {
   if (N <= 1 || N & (N - 1) != 0) {
     throw Error('scrypt: N must be > 1 and a power of 2');
@@ -94,7 +94,7 @@ crypt.Scrypt.prototype.GenerateDerivedKey =
  * @param{Array.<number>} src 8 bit array.
  * @param{Array.<number>} dst 32 bit array.
  */
-crypt.Scrypt.prototype.Convert8BitTo32Bit_ = function(src, dst) {
+starain.crypt.Scrypt.prototype.Convert8BitTo32Bit_ = function(src, dst) {
   var dstIndex = 0;
   for (var i = 0, len = src.length; i < len; i += 4) {
     dst[dstIndex++]  = (src[i] & 0xff) | (src[i + 1] & 0xff) << 8 |
@@ -109,7 +109,7 @@ crypt.Scrypt.prototype.Convert8BitTo32Bit_ = function(src, dst) {
  * @param{Array.<number>} src 32 bit array.
  * @param{Array.<number>} dst 8 bit array.
  */
-crypt.Scrypt.prototype.Convert32BitTo8Bit_ = function(src, dst) {
+starain.crypt.Scrypt.prototype.Convert32BitTo8Bit_ = function(src, dst) {
   var dstIndex = 0;
   for (var i = 0, len = src.length; i < len; i++) {
     var tmp = src[i];
@@ -133,7 +133,7 @@ crypt.Scrypt.prototype.Convert32BitTo8Bit_ = function(src, dst) {
  * @param{number} dstPos Position for Destination array.
  * @param{number} length Length of data to copy.
  */
-crypt.Scrypt.prototype.BlockCopy_ =
+starain.crypt.Scrypt.prototype.BlockCopy_ =
     function(src, srcPos, dest, destPos, length) {
   while (length--) {
     dest[destPos++] = src[srcPos++];
@@ -150,7 +150,7 @@ crypt.Scrypt.prototype.BlockCopy_ =
  * @param{number} N N param.
  * @param{Array.<number>} v v.
  */
-crypt.Scrypt.prototype.Smix_ = function(b, bIndex, r, N, v) {
+starain.crypt.Scrypt.prototype.Smix_ = function(b, bIndex, r, N, v) {
   var yIndex = 32 * r;
 
   // The fastest way for array copy.
@@ -178,7 +178,7 @@ crypt.Scrypt.prototype.Smix_ = function(b, bIndex, r, N, v) {
  * @param{number} yIndex index for y.
  * @param{number} r r param.
  */
-crypt.Scrypt.prototype.BlockMix_ = function(xy, yIndex, r) {
+starain.crypt.Scrypt.prototype.BlockMix_ = function(xy, yIndex, r) {
   var xIndex = (2 * r - 1) * 16;
   // The fastest way for array copy.
   var tmp = xy.slice(xIndex, xIndex + 16);
@@ -214,7 +214,7 @@ function R(a, b) {
  * @private
  * @param{Array.<number>} b 32 bit array for salsa process.
  */
-crypt.Scrypt.prototype.Salsa_ = function(b) {
+starain.crypt.Scrypt.prototype.Salsa_ = function(b) {
   // The fastest way for array copy.
   /**
    * @type{Array.<number>}
@@ -254,7 +254,8 @@ crypt.Scrypt.prototype.Salsa_ = function(b) {
  * @param{number} dstIndex Index for Destination array.
  * @param{number} len Number of data for XOR.
  */
-crypt.Scrypt.prototype.BlockXor_ = function(src, srcIndex, dst, dstIndex, len) {
+starain.crypt.Scrypt.prototype.BlockXor_ =
+    function(src, srcIndex, dst, dstIndex, len) {
   while (len--) {
     dst[dstIndex++] ^= src[srcIndex++];
   }

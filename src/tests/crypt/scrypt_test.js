@@ -1,7 +1,7 @@
-goog.provide('crypt.ScryptTest');
-goog.setTestOnly('crypt.ScryptTest');
+goog.provide('starain.crypt.ScryptTest');
+goog.setTestOnly('starain.crypt.ScryptTest');
 
-goog.require('crypt.Scrypt');
+goog.require('starain.crypt.Scrypt');
 
 /**
  * Convert string form data to number array.
@@ -30,7 +30,7 @@ function testScrypt0() {
                             0x36, 0x28, 0xcf, 0x35, 0xe2, 0x0c, 0x38, 0xd1, 0x89,
                             0x06];
 
-    var k = new crypt.Scrypt();
+    var k = new starain.crypt.Scrypt();
     var b = k.GenerateDerivedKey(p, s, 16, 1, 1, 512);
     console.log(b);
     assertElementsEquals(expectedDerivedKey, b);
@@ -48,7 +48,7 @@ function testScrypt1() {
                             0xee, 0x6d, 0x83, 0x60, 0xcb, 0xdf, 0xa2, 0xcc, 0x06,
                             0x40];
 
-  var k = new crypt.Scrypt();
+  var k = new starain.crypt.Scrypt();
   var b = k.GenerateDerivedKey(p, s, 1024, 8, 16, 512);
   console.log(b);
   assertElementsEquals(expectedDerivedKey, b);
@@ -66,7 +66,7 @@ function testScrypt2() {
                             0x1e, 0x40, 0xdf, 0xcf, 0x01, 0x7b, 0x45, 0x57, 0x58,
                             0x87];
 
-  var k = new crypt.Scrypt();
+  var k = new starain.crypt.Scrypt();
   var b = k.GenerateDerivedKey(p, s, 16384, 8, 1, 512);
   console.log(b);
   assertElementsEquals(expectedDerivedKey, b);
@@ -83,7 +83,7 @@ function testScrypt3() {
                               0x74, 0x82, 0x95, 0x25, 0xb1, 0x8d, 0x73, 0x23, 0xa5,
                               0x7f, 0x91, 0x96, 0x3c, 0x37];
 
-    var k = new crypt.Scrypt();
+    var k = new starain.crypt.Scrypt();
     var b = k.GenerateDerivedKey(p, s, 16, 100, 100, 256);
     console.log(b);
     assertElementsEquals(expectedDerivedKey, b);
@@ -101,7 +101,7 @@ function testScrypt4() {
                             0x8b, 0xdb, 0x87, 0x25, 0x1a, 0x53, 0x4f, 0x75,
                             0xac, 0xd9, 0x5a, 0xc5, 0xe5, 0xa, 0xa1, 0x5f];
 
-  var k = new crypt.Scrypt();
+  var k = new starain.crypt.Scrypt();
   var b = k.GenerateDerivedKey(p, s, 2, 10, 10, 256);
   console.log(b);
   assertElementsEquals(expectedDerivedKey, b);
