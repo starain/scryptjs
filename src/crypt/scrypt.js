@@ -18,8 +18,8 @@ starain.crypt.Scrypt = function() {
  * Derives a key from the password, salt, and cost parameters, returning
  * an number array of length keyLen that can be used as cryptographic key.
  * 
- * @param{Array.<number>|string} password Password.
- * @param{Array.<number>|string} salt Salt.
+ * @param{!Array.<number>|string} password Password.
+ * @param{!Array.<number>|string} salt Salt.
  * @param{number} N General work factor, iteration count.
  * @param{number} r Blocksize in use for underlying hash; fine-tunes the relative memory-cost.
  * @param{number} p Parallelization factor; fine-tunes the relative cpu-cost.
@@ -37,7 +37,7 @@ starain.crypt.Scrypt.prototype.GenerateDerivedKey =
   }
 
   /**
-   * @type{Array.<number>}
+   * @type{!Array.<number>}
    */
   var source = [];
   if (goog.isString(password)) {
@@ -49,7 +49,7 @@ starain.crypt.Scrypt.prototype.GenerateDerivedKey =
   }
 
   /**
-   * @type{Array.<number>}
+   * @type{!Array.<number>}
    */
   var s = [];
   if (goog.isString(salt)) {
@@ -61,7 +61,7 @@ starain.crypt.Scrypt.prototype.GenerateDerivedKey =
   }
 
   /**
-   * @type{Array.<number>}
+   * @type{!Array.<number>}
    */
   var b = goog.crypt.pbkdf2.deriveKeySha256(source, s, 1, p * r * 128 * 8);
 
@@ -129,8 +129,8 @@ starain.crypt.Scrypt.prototype.Convert32BitTo8Bit_ = function(src, dst) {
  * 
  * @param{Array.<number>} src Source array.
  * @param{number} srcPos Position for source array.
- * @param{Array.<number>} dst Destination array.
- * @param{number} dstPos Position for Destination array.
+ * @param{Array.<number>} dest Destination array.
+ * @param{number} destPos Position for Destination array.
  * @param{number} length Length of data to copy.
  */
 starain.crypt.Scrypt.prototype.BlockCopy_ =
