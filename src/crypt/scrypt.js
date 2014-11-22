@@ -24,7 +24,7 @@ starain.crypt.Scrypt = function() {
  * @param{number} r Blocksize in use for underlying hash; fine-tunes the relative memory-cost.
  * @param{number} p Parallelization factor; fine-tunes the relative cpu-cost.
  * @param{number} keyLen Key len in bit.
- * @return{Array.<number>} Derived Key in byte array.
+ * @return{!Array.<number>} Derived Key in byte array.
  */
 starain.crypt.Scrypt.prototype.GenerateDerivedKey =
     function(password, salt, N, r, p, keyLen) {
